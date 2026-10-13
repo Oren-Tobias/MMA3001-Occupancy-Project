@@ -1,0 +1,207 @@
+=================================================================
+MMA3001 - INITIAL OCCUPANCY DATA AUDIT
+=================================================================
+Dataset: /Users/orentobias/Library/Mobile Documents/com~apple~CloudDocs/University Work/SEM 2 2026 UNI/MMA3001/MMA3001-Occupancy-Project/data/raw/occupancy.csv
+Sample size: 250,000
+Loaded 250,000 rows.
+Loading time: 0.59 seconds
+
+=================================================================
+1. DATASET STRUCTURE
+=================================================================
+Total rows: 250,000
+Total columns: 8
+Unique devices: 1
+Unique floor spaces: 4
+
+Data types:
+id                                         int64
+deviceid                                  object
+floorspaceid                              object
+occupancystatus                           object
+headcount                                  int64
+collecteddate                datetime64[ns, UTC]
+occupancystatuschangedate    datetime64[ns, UTC]
+previousoccupancystatus                   object
+dtype: object
+
+=================================================================
+2. DATE RANGE
+=================================================================
+First measurement: 2023-11-23 13:36:52+00:00
+Last measurement: 2024-03-06 02:21:28+00:00
+Observed duration: 103 days 12:44:36
+
+=================================================================
+3. MISSING VALUES
+=================================================================
+                           missing_count  missing_percentage
+id                                     0                 0.0
+deviceid                               0                 0.0
+floorspaceid                           0                 0.0
+occupancystatus                        0                 0.0
+headcount                              0                 0.0
+collecteddate                          0                 0.0
+occupancystatuschangedate              0                 0.0
+previousoccupancystatus                0                 0.0
+
+=================================================================
+4. DUPLICATE RECORDS
+=================================================================
+Duplicate rows: 0
+Duplicate percentage: 0.000%
+
+=================================================================
+5. OCCUPANCY STATUS
+=================================================================
+occupancystatus
+CurrentlyOccupied    211345
+RecentlyOccupied      23404
+NotOccupied           15251
+Name: count, dtype: int64
+
+=================================================================
+6. HEADCOUNT
+=================================================================
+count    250000.000000
+mean          2.085772
+std           1.809741
+min           0.000000
+25%           1.000000
+50%           2.000000
+75%           3.000000
+max          29.000000
+Name: headcount, dtype: float64
+
+Headcount frequencies:
+headcount
+0     38655
+1     67812
+2     64586
+3     37707
+4     20669
+5     10473
+6      4712
+7      2221
+8      1168
+9       695
+10      411
+11      252
+12      151
+13      111
+14      103
+15       63
+16       43
+17       19
+18       10
+19        9
+20       12
+21       20
+22       22
+23       29
+24       17
+25       14
+26       10
+27        5
+29        1
+Name: count, dtype: int64
+
+=================================================================
+7. OCCUPANCY STATUS VS HEADCOUNT
+=================================================================
+headcount             0      1      2      3      4      5     6     7   ...  21  22  23  24  25  26  27  29
+occupancystatus                                                          ...                                
+CurrentlyOccupied      0  67812  64586  37707  20669  10473  4712  2221  ...  20  22  29  17  14  10   5   1
+NotOccupied        15251      0      0      0      0      0     0     0  ...   0   0   0   0   0   0   0   0
+RecentlyOccupied   23404      0      0      0      0      0     0     0  ...   0   0   0   0   0   0   0   0
+
+[3 rows x 29 columns]
+
+CurrentlyOccupied with zero headcount: 0
+NotOccupied with positive headcount: 0
+
+=================================================================
+8. SENSOR TIMING ANALYSIS
+=================================================================
+
+Time between observations (seconds):
+count    2.499960e+05
+mean     7.287907e+01
+std      3.878046e+03
+min      2.000000e+00
+1%       2.000000e+00
+5%       2.000000e+00
+25%      2.000000e+00
+50%      1.600000e+01
+75%      3.800000e+01
+95%      1.400000e+02
+99%      5.600000e+02
+max      1.349782e+06
+Name: interval_seconds, dtype: float64
+
+Most common intervals:
+interval_seconds
+2.0      69991
+20.0     41319
+4.0      25507
+40.0     22970
+6.0      12314
+60.0      7182
+8.0       5796
+18.0      5408
+10.0      4840
+80.0      4563
+16.0      4426
+30.0      3062
+100.0     2991
+12.0      2721
+22.0      2580
+14.0      2446
+120.0     2135
+38.0      1991
+140.0     1594
+24.0      1412
+Name: count, dtype: int64
+
+Intervals longer than one hour:
+484
+
+=================================================================
+9. FLOOR-SPACE COVERAGE
+=================================================================
+                                      observations  unique_devices         first_measurement          last_measurement  mean_headcount  maximum_headcount
+floorspaceid                                                                                                                                             
+0f3f37f8-0335-41e0-ae87-a1d677dfc7d7        138593               1 2023-11-23 13:37:32+00:00 2024-03-06 02:21:28+00:00        1.845880                 18
+941f0352-bb69-47d0-a9c5-ac29eb4f7319         97897               1 2023-11-23 13:36:52+00:00 2024-03-06 02:21:08+00:00        2.172222                 12
+227f1068-9e41-469f-bef0-275f27a0bdba          8448               1 2024-03-03 04:06:30+00:00 2024-03-05 02:09:56+00:00        4.758641                 29
+cca1ac3e-f81f-4ebb-aa2b-8b0bf3e9e53b          5062               1 2024-03-03 04:06:30+00:00 2024-03-05 01:32:48+00:00        2.521138                  8
+
+=================================================================
+10. OCCUPANCY STATE TRANSITIONS
+=================================================================
+occupancystatus          CurrentlyOccupied  NotOccupied  RecentlyOccupied
+previousoccupancystatus                                                  
+CurrentlyOccupied                        0            0             23404
+NotOccupied                          55194            0                 0
+RecentlyOccupied                     50700        15249                 0
+Unknown                             105451            2                 0
+
+Collection time minus status-change time:
+count    250000.000000
+mean        804.710640
+std        2052.539951
+min           0.000000
+25%           2.000000
+50%           4.000000
+75%         344.000000
+max       20184.000000
+dtype: float64
+
+This analysis helps determine whether the dataset
+contains regularly sampled data or event-based records.
+
+=================================================================
+DATA AUDIT COMPLETE
+=================================================================
+
+These results describe the initial sample, not necessarily the complete dataset.
